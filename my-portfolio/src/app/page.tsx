@@ -13,7 +13,7 @@ const smoothScroll = (targetId: string) => {
   const distance = targetPosition - startPosition;
   const duration = 1000; // Duration in milliseconds for half speed
 
-  let start = null;
+  let start: number | null = null;
 
   const easeInOutQuad = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
@@ -126,22 +126,24 @@ export default function Home() {
   const subtitleOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   return (
-    <div> {/* Removed ref and overflow-auto */}
+    <div>
+      {" "}
+      {/* Removed ref and overflow-auto */}
       <nav>
-        <motion.hr 
+        <motion.hr
           className="my-4"
           variants={hrRevealVariants}
           initial="hidden"
           animate="visible"
         />
-        <motion.ul 
+        <motion.ul
           className="flex flex-row justify-between"
           variants={navListVariants}
           initial="hidden"
           animate="visible"
         >
           {["HOME", "PORTFOLIO", "CONTACT"].map((item) => (
-            <motion.li 
+            <motion.li
               key={item}
               variants={navItemVariants}
               className="relative cursor-pointer"
@@ -152,7 +154,7 @@ export default function Home() {
           ))}
         </motion.ul>
         <div className="flex justify-center mt-4">
-          <motion.h1 
+          <motion.h1
             className="title leading-none tracking-tight flex overflow-hidden"
             style={{
               scale: titleScale,
@@ -174,8 +176,8 @@ export default function Home() {
           </motion.h1>
         </div>
       </nav>
-      <motion.div 
-        className="uppercase flex items-center justify-between"
+      <motion.div
+        className="uppercase flex items-center justify-between text-sm mb-6"
         variants={subtitleVariants}
         initial="hidden"
         animate="visible"
@@ -183,27 +185,35 @@ export default function Home() {
           opacity: subtitleOpacity, // Apply the transformed opacity
         }}
       >
-        <h2 id="home" className="cursor-pointer"> {/* Added id */}
+        <h2 id="home" className="cursor-pointer">
+          {" "}
+          {/* Added id */}
           * Based in Skopje, <br /> available everywhere
         </h2>
-        <h2 id="portfolio" className="mx-auto cursor-pointer"> {/* Added id */}
+        <h2 id="portfolio" className="mx-auto cursor-pointer">
+          {" "}
+          {/* Added id */}
           Frontend Developer | UI DESIGNER | GRAPHIC DESIGNER
         </h2>
-        <h2 id="contact" className="cursor-pointer"> {/* Added id */}
-          FB IN LN GIT
+        <h2 id="contact" className="cursor-pointer">
+          {" "}
+          {/* Added id */}
+          FB IN LN GIT DRB
         </h2>
       </motion.div>
-      <div className="h-[70vh] relative overflow-hidden" id="projects"> {/* Changed height from 50vh to 70vh */}
+      <div className="h-[70vh] relative overflow-hidden" id="projects">
+        {" "}
+        {/* Changed height from 50vh to 70vh */}
         <motion.video
           className="w-full h-full object-cover cursor-pointer"
-          src="https://www.w3schools.com/html/mov_bbb.mp4" // Replace with your video URL
+          src="https://videos.pexels.com/video-files/7308108/7308108-hd_1920_1080_24fps.mp4" // Replace with your video URL
           autoPlay
           loop
           muted
           playsInline
-          style={{ 
+          style={{
             scale: videoScale, // Updated scale based on new scroll range
-            opacity: videoOpacity // Updated opacity based on new scroll range
+            opacity: videoOpacity, // Updated opacity based on new scroll range
           }}
           variants={imageRevealVariants}
           initial="hidden"

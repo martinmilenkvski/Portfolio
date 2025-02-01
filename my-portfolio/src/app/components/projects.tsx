@@ -82,6 +82,17 @@ const titleVariants = {
   },
 };
 
+const hoverVariants = {
+  initial: { opacity: 1 },
+  hover: {
+    opacity: 0.7,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -132,6 +143,9 @@ export default function ProjectsSection() {
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
               variants={itemVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              whileHover="hover"
             >
               <div className="flex items-baseline gap-4 overflow-hidden">
                 <motion.span
@@ -147,6 +161,7 @@ export default function ProjectsSection() {
                   initial={{ y: 100 }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} // Added delay
+                  variants={hoverVariants}
                 >
                   {project.title}
                 </motion.h3>
