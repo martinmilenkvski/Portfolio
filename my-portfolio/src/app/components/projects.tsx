@@ -44,6 +44,44 @@ const projects: Project[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Increased stagger
+      delayChildren: 0.5,    // Increased delay
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+      delay: 0.4 // Added delay
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.7, // Increased delay
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -67,43 +105,6 @@ export default function ProjectsSection() {
     };
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.2,
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -111,7 +112,7 @@ export default function ProjectsSection() {
     >
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-sm mb-20 text-center"
+          className="text-xl mb-20 text-center" // Increased font size from text-sm to text-xl
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={titleVariants}
@@ -134,18 +135,18 @@ export default function ProjectsSection() {
             >
               <div className="flex items-baseline gap-4 overflow-hidden">
                 <motion.span
-                  className="text-sm opacity-50"
+                  className="text-lg opacity-50" // Increased font size from text-sm to text-lg
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 0.5 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }} // Added delay
                 >
                   {project.number}
                 </motion.span>
                 <motion.h3
-                  className="text-5xl md:text-7xl font-bold tracking-tighter"
+                  className="text-6xl md:text-8xl font-bold tracking-tighter" // Increased font size
                   initial={{ y: 100 }}
                   animate={{ y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} // Added delay
                 >
                   {project.title}
                 </motion.h3>
@@ -166,7 +167,7 @@ export default function ProjectsSection() {
             }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed pointer-events-none w-[300px] h-[200px] z-50"
+            className="fixed pointer-events-none w-[300px] h-[200px] z-10000" // Changed z-index from z-50 to z-10000
             style={{
               top: 0,
               left: 0,

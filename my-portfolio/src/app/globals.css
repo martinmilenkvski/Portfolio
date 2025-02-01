@@ -14,15 +14,41 @@
   }
 }
 
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling globally */
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   margin: 2rem;
   font-weight: bold;
+  font-size: 1.125rem; /* Increased base font size from default */
 }
+
+/* Removed styles related to Locomotive Scroll */
+/*
+[data-scroll-container] {
+  overflow: hidden;
+}
+
+.locomotive-scroll {
+  position: relative;
+}
+*/
 
 .title {
   font-size: 30rem;
   font-weight: bold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Removed custom cursor styles */
+  /*
+  .custom-cursor,
+  .cursor-trail {
+    transition: none;
+  }
+  */
 }
