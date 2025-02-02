@@ -21,7 +21,7 @@ export default function HoverPreview({ hoveredProject, mousePosition }: HoverPre
           }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed pointer-events-none w-[300px] h-[200px] z-10000"
+          className="fixed pointer-events-none w-[400px] h-[300px] z-10000"
           style={{
             top: 0,
             left: 0,
@@ -32,7 +32,7 @@ export default function HoverPreview({ hoveredProject, mousePosition }: HoverPre
             src={hoveredProject.image || "/placeholder.svg"}
             alt={hoveredProject.title}
             fill
-            className="object-cover rounded-lg"
+            className="object-cover "
             priority
           />
         </motion.div>

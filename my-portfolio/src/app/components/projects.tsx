@@ -13,7 +13,7 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: "01", number: "01", title: "KONTRANS", image: "https://picsum.photos/seed/brand/300/200" },
+  { id: "01", number: "01", title: "KONTRANS", image: "https://picsum.photos/seed/brand/300/400" },
   { id: "02", number: "02", title: "OSA ENGENEERING", image: "https://picsum.photos/seed/digital/300/200" },
   { id: "03", number: "03", title: "OFFICE PLANNER", image: "https://picsum.photos/seed/video/300/200" },
   { id: "04", number: "04", title: "WEB PREDENCE", image: "https://picsum.photos/seed/web/300/200" },
